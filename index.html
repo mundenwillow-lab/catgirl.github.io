@@ -3,118 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
     <title>Meowswillow DEMO</title>
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
+        @font-face {
+            font-family: fs-sinclair-bold;
+            src: url(src/FS\ Sinclair\ Bold.otf);
         }
-        body {
-            min-height: 100vh;
-            min-width: 100vw;
-            overflow: hidden;
-            background: url('img/missing.png');
-            background-repeat: repeat;
-            background-size: 150px 150px;
-            animation: scroll-missing-diagonal 3s linear infinite;
+
+        @font-face {
+            font-family: fs-sinclair-regular;
+            src: url(src/FS\ Sinclair\ Regular.otf);
         }
-        @keyframes scroll-missing-diagonal {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 150px -150px;
-            }
-        }
-        .win95-window {
-            position: absolute;
-            top: 120px;
-            left: 120px;
-            width: 400px;
-            min-height: 200px;
-            background: #c0c0c0;
-            border: px solid #000;
-            font-family: 'MS Sans Serif', Arial, sans-serif;
-            z-index: 10;
-        }
-        .win95-titlebar {
-            background: linear-gradient(to bottom, #1033d0 0%, #1084d0 100%);
-            color: #fff;
-            padding: 4px 8px;
-            cursor: move;
-            font-weight: bold;
-            border-bottom: 2px solid #000;
-            user-select: none;
-            display: flex;
-            align-items: center;
-            height: 28px;
-        }
-        .win95-title {
-            font-size: 16px;
-            letter-spacing: 1px;
-        }
-        .win95-content {
-            padding: 16px;
-            background: #fff;
-            min-height: 120px;
-            border-top: 2px solid #fff;
-            border-left: 2px solid #fff;
-            border-bottom: 2px solid #808080;
-            border-right: 2px solid #808080;
-        }
-        .win95-buttons {
-            margin-left: auto;
-            display: flex;
-            gap: 4px;
-        }
-        .win95-btn {
-            width: 22px;
-            height: 22px;
-            background: #c0c0c0;
-            border: 2px outset #fff;
-            color: #000;
-            font-family: inherit;
-            font-size: 16px;
-            line-height: 16px;
-            padding: 0;
-            margin-left: 2px;
-            cursor: pointer;
-            box-shadow: 1px 1px 0 #808080;
-            transition: background 0.1s;
-        }
-        .win95-btn:active {
-            border: 2px inset #808080;
-            background: #a0a0a0;
-        }
-        .win95-intro {
-            font-family: 'MS Sans Serif', Arial, sans-serif;
-            font-size: 15px;
-            color: #000;
-            background: #fff;
-            padding: 8px 12px;
-            border: 1px solid #808080;
-            box-shadow: 2px 2px 0 #fff;
-            margin-top: 8px;
-        }
+
+.container-Div{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 25vh;
+}
+
+.border-Div {
+    background-image: linear-gradient(
+        45deg, 
+        rgba(0, 0, 0, 0.5) 25%, 
+        rgba(143, 143, 143, 0.5) 25%, 
+        rgba(143, 143, 143, 0.5) 50%, 
+        rgba(0, 0, 0, 0.5) 50%, 
+        rgba(0, 0, 0, 0.5) 75%, 
+        rgba(143, 143, 143, 0.5) 75%, 
+        rgba(143, 143, 143, 0.5) 100%
+    );
+    border: 5px rgba(0, 0, 0, 0.719);
+    border-style: solid;
+    background-size: 15px 15px;
+    align-self: center;
+    min-height: 50px;
+    min-width: 50px;
+    height: fit-content;
+    width: fit-content;
+    padding: 6px;
+}
+
+.text-Div {
+    text-align: center;
+    font-family: fs-sinclair-bold, sans-serif;
+    color: #FFE710;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+}
+
     </style>
 </head>
 <body>
-    <div class="win95-window" id="window1">
-        <div class="win95-titlebar" id="titlebar1">
-            <span class="win95-title">README.md</span>
-            <div class="win95-buttons">
-                <button class="win95-btn" id="minimize1" title="Minimize">_</button>
-                <button class="win95-btn" id="close1" title="Close">×</button>
-            </div>
-        </div>
-        <div class="win95-content" id="content1">
-            <div class="win95-intro">
-                <p></p>
-            </div>
+    <div class="container-Div">
+    <div class="border-Div">
+    <div class="text-Div">
+            <h2>Greetings Meowdiver!</h2>
         </div>
     </div>
+</div>
+
     <script>
     (function() {
     // Block common bot user agents
@@ -132,28 +82,6 @@
         return;
     }
     })();
-    // Drag logic
-    const win = document.getElementById('window1');
-    const bar = document.getElementById('titlebar1');
-    let offsetX = 0, offsetY = 0, isDown = false;
-    bar.addEventListener('mousedown', function(e) {
-        if (e.target.closest('.win95-btn')) return;
-        isDown = true;
-        offsetX = e.clientX - win.offsetLeft;
-        offsetY = e.clientY - win.offsetTop;
-        document.body.style.userSelect = 'none';
-    });
-    document.addEventListener('mouseup', function() {
-        isDown = false;
-        document.body.style.userSelect = '';
-    });
-    document.addEventListener('mousemove', function(e) {
-        if (!isDown) return;
-        win.style.left = (e.clientX - offsetX) + 'px';
-        win.style.top = (e.clientY - offsetY) + 'px';
-    });
-
-    document.querySelector('.win95-intro p').textContent = 'Hello everyone! I am the catgirl in your router.';
     </script>
 </body>
 </html>
