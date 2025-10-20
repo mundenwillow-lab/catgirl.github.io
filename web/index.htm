@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meowswillow DEMO</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            min-height: 100vh;
+            min-width: 100vw;
+            overflow: hidden;
+            background: url('img/missing.png');
+            background-repeat: repeat;
+            background-size: 150px 150px;
+            animation: scroll-missing-diagonal 3s linear infinite;
+        }
+        @keyframes scroll-missing-diagonal {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 150px -150px;
+            }
+        }
+        .win95-window {
+            position: absolute;
+            top: 120px;
+            left: 120px;
+            width: 400px;
+            min-height: 200px;
+            background: #c0c0c0;
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0 #808080, 8px 8px 0 #fff;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            z-index: 10;
+        }
+        .win95-titlebar {
+            background: linear-gradient(to bottom, #000080 0%, #1084d0 100%);
+            color: #fff;
+            padding: 4px 8px;
+            cursor: move;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            height: 28px;
+        }
+        .win95-title {
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        .win95-content {
+            padding: 16px;
+            background: #fff;
+            min-height: 120px;
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+            border-bottom: 2px solid #808080;
+            border-right: 2px solid #808080;
+        }
+        .win95-buttons {
+            margin-left: auto;
+            display: flex;
+            gap: 4px;
+        }
+        .win95-btn {
+            width: 22px;
+            height: 22px;
+            background: #c0c0c0;
+            border: 2px outset #fff;
+            color: #000;
+            font-family: inherit;
+            font-size: 16px;
+            line-height: 16px;
+            padding: 0;
+            margin-left: 2px;
+            cursor: pointer;
+            box-shadow: 1px 1px 0 #808080;
+            transition: background 0.1s;
+        }
+        .win95-btn:active {
+            border: 2px inset #808080;
+            background: #a0a0a0;
+        }
+        .win95-intro {
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            font-size: 15px;
+            color: #000;
+            background: #fff;
+            padding: 8px 12px;
+            border: 1px solid #808080;
+            box-shadow: 2px 2px 0 #fff;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="win95-window" id="window1">
+        <div class="win95-titlebar" id="titlebar1">
+            <span class="win95-title">README.md</span>
+            <div class="win95-buttons">
+                <button class="win95-btn" id="minimize1" title="Minimize">_</button>
+                <button class="win95-btn" id="close1" title="Close">×</button>
+            </div>
+        </div>
+        <div class="win95-content" id="content1">
+            <div class="win95-intro">
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <script>
+    (function() {
+    // Block common bot user agents
+    const botPatterns = [
+        /bot/i, /crawler/i, /spider/i, /scraper/i, /scraping/i,
+        /curl/i, /wget/i, /python/i, /java/i, /perl/i, /ruby/i,
+        /phantomjs/i, /headless/i, /selenium/i, /puppeteer/i
+    ];
+    
+    const userAgent = navigator.userAgent;
+    const isBot = botPatterns.some(pattern => pattern.test(userAgent));
+    
+    if (isBot) {
+        document.body.innerHTML = '<h1>Access Denied</h1>';
+        return;
+    }
+    
+    // Rate limiting with cooldown
+    const now = Date.now();
+    const lastVisit = localStorage.getItem('lastVisit') || 0;
+    const visitCount = localStorage.getItem('visitCount') || 0;
+    
+    // Reset counter if more than 5 minutes have passed
+    if (now - lastVisit > 300000) {
+        localStorage.setItem('visitCount', '1');
+        localStorage.setItem('lastVisit', now);
+    } else {
+        const newCount = parseInt(visitCount) + 1;
+        if (newCount > 10) {
+            document.body.innerHTML = '<h1>Rate Limit Exceeded - Try again in 1 hour</h1>';
+            return;
+        }
+        localStorage.setItem('visitCount', newCount);
+        localStorage.setItem('lastVisit', now);
+    }
+    })();
+    // Drag logic
+    const win = document.getElementById('window1');
+    const bar = document.getElementById('titlebar1');
+    let offsetX = 0, offsetY = 0, isDown = false;
+    bar.addEventListener('mousedown', function(e) {
+        if (e.target.closest('.win95-btn')) return;
+        isDown = true;
+        offsetX = e.clientX - win.offsetLeft;
+        offsetY = e.clientY - win.offsetTop;
+        document.body.style.userSelect = 'none';
+    });
+    document.addEventListener('mouseup', function() {
+        isDown = false;
+        document.body.style.userSelect = '';
+    });
+    document.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        win.style.left = (e.clientX - offsetX) + 'px';
+        win.style.top = (e.clientY - offsetY) + 'px';
+    });
+
+    document.querySelector('.win95-intro p').textContent = 'Hello everyone! How are you? Fine thank you!';
+    </script>
+</body>
+</html>
