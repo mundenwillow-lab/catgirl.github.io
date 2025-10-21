@@ -4,113 +4,150 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=0.9">
-    <title>Meowswillow DEMO</title>
+    <title>catgirlpawventure</title>
     <style>
-        @font-face {
-            font-family: fs-sinclair-bold;
-            src: url(src/FS\ Sinclair\ Bold.otf);
+
+         @font-face {
+            font-family: BBHsans;
+            src: url(src/BBHSansHegarty-Regular.ttf);
         }
 
-        @font-face {
-            font-family: fs-sinclair-regular;
-            src: url(src/FS\ Sinclair\ Regular.otf);
+         @keyframes scrollBackground {
+        from {
+            background-position: 0 0;
+        }
+        to {
+         background-position: 1000px 1000px;
+        }
+}
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFE1AF;
+            color: #FFE1AF;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: BBHsans;
+            background-image: url('/src/more-leaves.png');
+            background-repeat: repeat;
+            background-size: auto;
+            animation: scrollBackground 30s linear infinite;
         }
 
-.container-Div{
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    height: 10vh;
-    margin-bottom: 55px;
-}
 
-.border-Div {
-    background-image: linear-gradient(
-        45deg, 
-        rgba(0, 0, 0, 0.5) 25%, 
-        rgba(143, 143, 143, 0.5) 25%, 
-        rgba(143, 143, 143, 0.5) 50%, 
-        rgba(0, 0, 0, 0.5) 50%, 
-        rgba(0, 0, 0, 0.5) 75%, 
-        rgba(143, 143, 143, 0.5) 75%, 
-        rgba(143, 143, 143, 0.5) 100%
-    );
-    border: 5px rgba(0, 0, 0, 0.719);
-    border-style: solid;
-    background-size: 15px 15px;
-    align-self: center;
-    min-height: 50px;
-    min-width: 50px;
-    height: fit-content;
-    width: fit-content;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: 75vh;
-    padding-right: 75vh;
-}
+        p1 {
+            font-size: 21px;
+        }
 
-.accept-Div {
-    background-image: linear-gradient(
-        45deg, 
-        rgba(0, 0, 0, 0.5) 25%, 
-        rgba(43, 255, 0, 0.5) 25%, 
-        rgba(43, 255, 0, 0.5) 50%, 
-        rgba(0, 0, 0, 0.5) 50%, 
-        rgba(0, 0, 0, 0.5) 75%, 
-        rgba(43, 255, 0, 0.5) 75%, 
-        rgba(43, 255, 0, 0.5) 100%
-    );
-    border: 5px rgba(43, 255, 0, 0.75);
-    border-style: solid;
-    background-size: 15px 15px;
-    align-self: center;
-    min-height: 50px;
-    min-width: 50px;
-    height: fit-content;
-    width: fit-content;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: 75vh;
-    padding-right: 75vh;
-}
+        h2 {
+            font-size: 32px;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #B77466;
+        }
 
-.text-Div {
-    text-align: center;
-    font-family: fs-sinclair-bold, sans-serif;
-    color: #FFE710;
-    margin: auto;
-    width: fit-content;
-    height: fit-content;
-}
+            ul li {
+            float: left;
+            }
 
+        ul li a {
+        display: block;
+        color: #FFE1AF;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+
+        ul li a:hover {
+        background-color: #957C62;
+        }
+
+        .topbar-div {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            background-color: #B77466;
+        }
+
+        .childbar-div {
+            position: fixed;
+            top: 45px;
+            left: 0;
+            width: 100%;
+            height: 25px;
+            background-color: #957C62;
+            outline-style: solid;
+            outline-width: 1px;
+            border-radius: 1px;
+            outline-color: #E2B59A;
+        }
+
+        .main-content {
+            position: fixed;
+            top: 90px;
+            width: 65vh;
+            height: 88vh;
+            background-color: #B77466;
+            border-radius: 0.5px;
+            outline-style: solid;
+            outline-color: #957C62;
+            text-align: center;
+        
+        }
+
+        .side-bar {
+            position: fixed;
+            top: 90px;
+            left: 15px;
+            width: 25vh;
+            height: 88vh;
+            background-color: #B77466;
+            border-radius: 0.5px;
+            outline-style: solid;
+            outline-color: #957C62;
+            text-align: center;
+            }
     </style>
 </head>
-<body style="background-color:#272727;" >
-    <div class="container-Div">
-    <div class="border-Div">
-    <div class="text-Div">
-            <h2>Greetings Meowdiver!</h2>
-        </div>
+<body>
+    <div class="topbar-div">
+        <ul>
+            <li><a href="https://discord.gg/8Cpcw8U5ka">Discord</a></li>
+            <li><a href="https://www.youtube.com/@CookieCutterCatto">YouTube</a></li>
+            <li><a href="https://api.whatsapp.com/send/?phone=640223049926&text&type=phone_number&app_absent=0">Contact</a></li>
+</ul>
     </div>
-</div>
-
-
+    <div class="childbar-div" style=""></div>
+    <div class ="main-content">
+        <h2> >> MEOWSWILLOW.BIN << </h2>
+        <p1>Heya! My name is Willow, i'm a solo game dev and computer hobbyist from New Zealand. This website serves as a place to store and advertise my projects and other endeavours inside of the digital plane. <3 </p1>
+        <p1 style="position: relative; top: 35px;">My skills include intermediate knowledge of HTML, css, Python and C#. All of which I have used in the past for various projects stemming from Web design to 3D game development. :3</p1>
+    </div>
+    </div>
     <script>
     (function() {
-    // Block common bot user agents
-    const botPatterns = [
-        /bot/i, /crawler/i, /spider/i, /scraper/i, /scraping/i,
-        /curl/i, /wget/i, /python/i, /java/i, /perl/i, /ruby/i,
-        /phantomjs/i, /headless/i, /selenium/i, /puppeteer/i
-    ];
-    
-    const userAgent = navigator.userAgent;
-    const isBot = botPatterns.some(pattern => pattern.test(userAgent));
-    
-    if (isBot) {
-        document.body.innerHTML = '<h1>Access Denied</h1>';
-        return;
-    }
+        // Block common bot user agents
+        const botPatterns = [
+            /bot/i, /crawler/i, /spider/i, /scraper/i, /scraping/i,
+            /curl/i, /wget/i, /python/i, /java/i, /perl/i, /ruby/i,
+            /phantomjs/i, /headless/i, /selenium/i, /puppeteer/i
+        ];
+        
+        const userAgent = navigator.userAgent;
+        const isBot = botPatterns.some(pattern => pattern.test(userAgent));
+        
+        if (isBot) {
+            document.body.innerHTML = '<h1>Access Denied</h1>';
+            return;
+        }
     })();
     </script>
 </body>
