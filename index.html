@@ -1,154 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=0.9">
-    <title>catgirlpawventure</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>catgirlpawventure</title>
+  <style>
+    @font-face {
+      font-family: BBHsans;
+      src: url(src/BBHSansHegarty-Regular.ttf);
+    }
 
-         @font-face {
-            font-family: BBHsans;
-            src: url(src/BBHSansHegarty-Regular.ttf);
-        }
+    @keyframes scrollBackground {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 1000px 1000px;
+      }
+    }
 
-         @keyframes scrollBackground {
-        from {
-            background-position: 0 0;
-        }
-        to {
-         background-position: 1000px 1000px;
-        }
-}
-        html, body {
-            margin: 0;
-            padding: 0;
-            background-color: #FFE1AF;
-            color: #FFE1AF;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: BBHsans;
-            background-image: url('/src/more-leaves.png');
-            background-repeat: repeat;
-            background-size: auto;
-            animation: scrollBackground 30s linear infinite;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body {
+      font-family: BBHsans, Arial, sans-serif;
+      background-color: #FFE1AF;
+      color: #FFE1AF;
+      background-image: url('/src/more-leaves.png');
+      background-repeat: repeat;
+      background-size: auto;
+      animation: scrollBackground 30s linear infinite;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        p1 {
-            font-size: 21px;
-        }
+    .topbar-div {
+      background-color: #B77466;
+    }
 
-        h2 {
-            font-size: 32px;
-        }
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #B77466;
-        }
+    .topbar-div ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+    }
 
-            ul li {
-            float: left;
-            }
+    .topbar-div ul li a {
+      display: block;
+      color: #FFE1AF;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
 
-        ul li a {
-        display: block;
-        color: #FFE1AF;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        }
+    .topbar-div ul li a:hover {
+      background-color: #957C62;
+    }
 
-        ul li a:hover {
-        background-color: #957C62;
-        }
+    .childbar-div {
+      background-color: #957C62;
+      border-top: 1px solid #E2B59A;
+      border-bottom: 1px solid #E2B59A;
+      height: 25px;
+    }
 
-        .topbar-div {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 45px;
-            background-color: #B77466;
-        }
+    .content-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      flex: 1;
+      flex-wrap: wrap;
+    }
 
-        .childbar-div {
-            position: fixed;
-            top: 45px;
-            left: 0;
-            width: 100%;
-            height: 25px;
-            background-color: #957C62;
-            outline-style: solid;
-            outline-width: 1px;
-            border-radius: 1px;
-            outline-color: #E2B59A;
-        }
+    .main-content, .side-bar {
+      background-color: #B77466;
+      color: #FFE1AF;
+      border-radius: 4px;
+      border: 1px solid #957C62;
+      padding: 20px;
+      text-align: center;
+    }
 
-        .main-content {
-            position: fixed;
-            top: 90px;
-            width: 65vh;
-            height: 88vh;
-            background-color: #B77466;
-            border-radius: 0.5px;
-            outline-style: solid;
-            outline-color: #957C62;
-            text-align: center;
-        
-        }
+    .main-content {
+      flex: 2;
+      min-width: 300px;
+    }
 
-        .side-bar {
-            position: fixed;
-            top: 90px;
-            left: 15px;
-            width: 25vh;
-            height: 88vh;
-            background-color: #B77466;
-            border-radius: 0.5px;
-            outline-style: solid;
-            outline-color: #957C62;
-            text-align: center;
-            }
-    </style>
+    .side-bar {
+      flex: 1;
+      min-width: 260px;
+      max-width: 400px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 85%;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .main-content, .side-bar {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      iframe {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="topbar-div">
-        <ul>
-            <li><a href="https://discord.gg/8Cpcw8U5ka">Discord</a></li>
-            <li><a href="https://www.youtube.com/@CookieCutterCatto">YouTube</a></li>
-            <li><a href="https://api.whatsapp.com/send/?phone=640223049926&text&type=phone_number&app_absent=0">Contact</a></li>
-</ul>
+  <div class="topbar-div">
+    <ul>
+      <li><a href="https://discord.gg/8Cpcw8U5ka">Discord</a></li>
+      <li><a href="https://www.youtube.com/@CookieCutterCatto">YouTube</a></li>
+      <li><a href="https://api.whatsapp.com/send/?phone=640223049926&text&type=phone_number&app_absent=0">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="childbar-div"></div>
+
+  <div class="content-wrapper">
+    <div class="side-bar">
+      <h1>Latest INFOSEC news!!</h1>
+      <h1>VVVVVVVVVV</h1>
+      <iframe src="https://krebsonsecurity.com/"></iframe>
     </div>
-    <div class="childbar-div" style=""></div>
-    <div class ="main-content">
-        <h2> >> MEOWSWILLOW.BIN << </h2>
-        <p1>Heya! My name is Willow, i'm a solo game dev and computer hobbyist from New Zealand. This website serves as a place to store and advertise my projects and other endeavours inside of the digital plane. <3 </p1>
-        <p1 style="position: relative; top: 35px;">My skills include intermediate knowledge of HTML, css, Python and C#. All of which I have used in the past for various projects stemming from Web design to 3D game development. :3</p1>
+    <div class="main-content">
+      <h2>&gt;&gt; MEOWSWILLOW.BIN &lt;&lt;</h2>
+      <p>
+        Heya! My name is Willow, I'm an infosec enthusiast and computer hobbyist from New Zealand.
+        This website serves as a place to store and advertise my projects and other endeavours inside the digital plane. &lt;3
+      </p>
+      <p>
+        My skills include intermediate knowledge of HTML, CSS, Python, and C# — all of which I've used
+        in projects from web design to 3D game development. :3
+      </p>
     </div>
-    </div>
-    <script>
-    (function() {
-        // Block common bot user agents
-        const botPatterns = [
-            /bot/i, /crawler/i, /spider/i, /scraper/i, /scraping/i,
-            /curl/i, /wget/i, /python/i, /java/i, /perl/i, /ruby/i,
-            /phantomjs/i, /headless/i, /selenium/i, /puppeteer/i
-        ];
-        
-        const userAgent = navigator.userAgent;
-        const isBot = botPatterns.some(pattern => pattern.test(userAgent));
-        
-        if (isBot) {
-            document.body.innerHTML = '<h1>Access Denied</h1>';
-            return;
-        }
+  </div>
+
+  <script>
+    (function () {
+      const botPatterns = [
+        /bot/i, /crawler/i, /spider/i, /scraper/i, /scraping/i,
+        /curl/i, /wget/i, /python/i, /java/i, /perl/i, /ruby/i,
+        /phantomjs/i, /headless/i, /selenium/i, /puppeteer/i
+      ];
+      const userAgent = navigator.userAgent;
+      const isBot = botPatterns.some(pattern => pattern.test(userAgent));
+      if (isBot) {
+        document.body.innerHTML = '<h1>Access Denied</h1>';
+      }
     })();
-    </script>
+  </script>
 </body>
 </html>
